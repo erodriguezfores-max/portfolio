@@ -158,8 +158,9 @@ body.cafler-preview #page-home::before {
   line-height: 1.1;
   letter-spacing: -0.01em;
   color: #fff;
+  text-decoration: none;
   white-space: nowrap;
-  cursor: default;
+  cursor: pointer;
   display: flex;
   align-items: baseline;
   margin-bottom: 0.1rem;
@@ -290,6 +291,23 @@ body.cafler-preview .work-pill {
 }
 body.cafler-preview .home-location { color: #888; }
 .home-location svg { width: 11px; }
+
+/* ═══════════════════════════════════════════
+   PLACEHOLDER PAGES (Me, Projects...)
+═══════════════════════════════════════════ */
+.page-placeholder {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #000;
+}
+.placeholder-text {
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-weight: 400;
+  font-size: 1rem;
+  color: #555;
+}
 
 /* ═══════════════════════════════════════════
    CAFLER PAGE
@@ -499,4 +517,42 @@ body.cafler-preview .home-location { color: #888; }
 
 @media (prefers-reduced-motion: reduce) {
   .reveal { filter: none; transform: none; opacity: 1; transition: none; }
+}
+
+/* ═══════════════════════════════════════════
+   MOBILE / SMALL SCREENS
+   (only applies below 768px — the desktop
+   layout above is never touched by this block)
+═══════════════════════════════════════════ */
+@media (max-width: 767px) {
+
+  /* -- nav -- */
+  .nav-right { gap: 1rem; }
+  .nav-link { font-size: 0.72rem; letter-spacing: 0.05em; }
+
+  /* -- home page -- */
+  .home-cols {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+    padding-top: 2.5rem;
+    padding-bottom: 2.5rem;
+  }
+  .home-right { justify-content: flex-start; }
+
+  .home-subtitle { white-space: normal; }
+
+  .home-name,
+  .home-subtitle,
+  .pill-cafler,
+  .pill-year {
+    font-size: clamp(1.3rem, 7vw, 2rem);
+  }
+  .work-pill { gap: 1rem; padding: 0.5rem 1.1rem; }
+
+  /* -- cafler page -- */
+  .cafler-body {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    padding: 3rem var(--gutter);
+  }
 }
