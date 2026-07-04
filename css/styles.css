@@ -41,6 +41,9 @@ body {
 @media (min-width: 1024px) {
   body { --gutter: 150px; }
 }
+body.cafler-page {
+  background: #f2f2f0;
+}
 
 /* ─── NAV — glass blur header ───────────────── */
 .site-nav {
@@ -432,13 +435,31 @@ body.cafler-preview .home-location { color: #888; }
   text-rendering: optimizeLegibility;
 }
 
-.cafler-foot-bar {
+.cafler-divider {
   background: #f2f2f0;
-  padding: 2.5rem;
   display: flex;
   justify-content: center;
+  padding: 0 0 4rem;
 }
-.cafler-foot-bar svg { width: 36px; opacity: 0.22; }
+.divider-mark { width: 36px; height: auto; opacity: 0.85; }
+
+.cafler-video-wrap {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  background: #000;
+}
+.cafler-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.cafler-carousel {
+  width: 100%;
+  display: block;
+}
 
 #nav-cafler {
   position: fixed;
