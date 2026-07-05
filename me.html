@@ -7,9 +7,9 @@
   <link rel="icon" type="image/svg+xml" href="favicon.svg"/>
   <link rel="stylesheet" href="css/styles.css"/>
 </head>
-<body>
+<body class="me-page">
 
-<nav class="site-nav" id="nav-me">
+<nav class="site-nav me-fade-in" id="nav-me">
   <a href="index.html" class="nav-logo" id="logoMe" aria-label="erofo">
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 163.25 160.94">
       <path class="logo-path" d="M107,107l54,54H0V0H160.94L107,54A37.45,37.45,0,0,0,107,107Z"/>
@@ -23,9 +23,89 @@
   </div>
 </nav>
 
-<div class="page-placeholder">
-  <p class="placeholder-text">Coming soon.</p>
-</div>
+<section class="me-video-section me-fade-in" id="section-feel">
+  <div class="me-video-frame pending" id="frameFeel">
+    <video id="videoFeel" class="me-video" muted playsinline preload="auto">
+      <source src="assets/me-feel-it-real-vertical.mp4" type="video/mp4" media="(max-width: 767px)">
+      <source src="assets/me-feel-it-real.mp4" type="video/mp4">
+    </video>
+  </div>
+  <div class="me-grain" id="grainFeel" aria-hidden="true"></div>
 
+  <div class="me-intro" id="introFeel">
+    <p class="me-intro-text">Some things are better heard than described.</p>
+    <button class="me-play-btn" id="playFeel">
+      <svg class="play-icon" viewBox="0 0 20 24" fill="currentColor"><path d="M17.494 7.96591L7.954 0.965912C7.20889 0.420297 6.32722 0.0917064 5.40677 0.0165754C4.48631 -0.0585557 3.56302 0.122709 2.7393 0.540269C1.91557 0.95783 1.22358 1.59537 0.740058 2.3822C0.25654 3.16902 0.000386015 4.07439 0 4.99791V18.9979C0.000164771 19.9218 0.256333 20.8277 0.740075 21.6149C1.22382 22.402 1.91621 23.0398 2.74042 23.4573C3.56463 23.8749 4.48841 24.0559 5.40925 23.9802C6.33008 23.9046 7.21196 23.5753 7.957 23.0289L17.497 16.0289C18.1303 15.5645 18.6452 14.9575 19.0002 14.257C19.3552 13.5565 19.5401 12.7822 19.5401 11.9969C19.5401 11.2116 19.3552 10.4374 19.0002 9.73685C18.6452 9.03635 18.1303 8.42932 17.497 7.96491L17.494 7.96591ZM16.31 14.4159L6.77 21.4159C6.32302 21.7425 5.79437 21.9391 5.24257 21.9839C4.69078 22.0286 4.13736 21.9199 3.64357 21.6695C3.14978 21.4192 2.73488 21.0372 2.4448 20.5656C2.15472 20.0941 2.00078 19.5515 2 18.9979V4.99791C1.99445 4.44326 2.1455 3.89829 2.43578 3.42564C2.72606 2.95298 3.1438 2.5718 3.641 2.32591C4.06389 2.1108 4.53154 1.99843 5.006 1.99791C5.64189 2.00034 6.26022 2.2068 6.77 2.58691L16.31 9.58691C16.6895 9.86561 16.9981 10.2297 17.2107 10.6498C17.4234 11.0698 17.5343 11.5341 17.5343 12.0049C17.5343 12.4758 17.4234 12.94 17.2107 13.36C16.9981 13.7801 16.6895 14.1442 16.31 14.4229V14.4159Z"/></svg>
+      Play with sound
+    </button>
+  </div>
+
+  <div class="me-reveal-text" id="textFeel">
+    <p><strong>This is how I see things.</strong> A collection of moments, frames, and ideas that have shaped the way I approach every project — from the first shot to the final cut. Photography, design, and video editing, all in one piece. Not a highlight reel.</p>
+    <p class="tagline">A point of view.</p>
+  </div>
+
+  <div class="me-look-closer" id="lookCloserFeel">
+    <p>Look closer through my eyes</p>
+    <div class="chevron"></div>
+  </div>
+
+  <button class="me-icon-btn me-skip-btn visible" id="skipFeel" aria-label="Skip">
+    <svg viewBox="0 0 24 24" fill="currentColor">
+      <path d="M4 5v14l9-7-9-7z"/>
+      <path d="M14 5v14l9-7-9-7z"/>
+    </svg>
+  </button>
+
+  <div class="me-controls">
+    <button class="me-icon-btn me-volume-btn" id="volumeFeel" aria-label="Unmute">
+      <svg class="icon-unmuted" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M11 5 6 9H2v6h4l5 4V5z"/>
+        <path d="M15.5 8.5a5 5 0 0 1 0 7"/>
+        <path d="M18.5 5.5a9 9 0 0 1 0 13"/>
+      </svg>
+      <svg class="icon-muted" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M11 5 6 9H2v6h4l5 4V5z"/>
+        <line x1="23" y1="9" x2="17" y2="15"/>
+        <line x1="17" y1="9" x2="23" y2="15"/>
+      </svg>
+    </button>
+
+    <button class="me-icon-btn me-eye-btn" id="eyeFeel" aria-label="Alternar vista">
+      <svg class="icon-eye-open" viewBox="0 0 68 68" fill="currentColor">
+        <path d="M33.9998 46.2684C27.2281 46.2684 21.7314 40.7717 21.7314 34C21.7314 27.2284 27.2281 21.7317 33.9998 21.7317C40.7714 21.7317 46.2681 27.2284 46.2681 34C46.2681 40.7717 40.7714 46.2684 33.9998 46.2684ZM33.9998 25.9817C29.5798 25.9817 25.9814 29.58 25.9814 34C25.9814 38.42 29.5798 42.0184 33.9998 42.0184C38.4198 42.0184 42.0181 38.42 42.0181 34C42.0181 29.58 38.4198 25.9817 33.9998 25.9817Z"/>
+        <path d="M34.0001 59.5567C23.3467 59.5567 13.2884 53.3234 6.37506 42.5C3.37173 37.825 3.37173 30.2034 6.37506 25.5C13.3167 14.6767 23.3751 8.44336 34.0001 8.44336C44.6251 8.44336 54.6834 14.6767 61.5967 25.5C64.6001 30.175 64.6001 37.7967 61.5967 42.5C54.6834 53.3234 44.6251 59.5567 34.0001 59.5567ZM34.0001 12.6934C24.8484 12.6934 16.0934 18.19 9.97339 27.795C7.84839 31.11 7.84839 36.89 9.97339 40.205C16.0934 49.81 24.8484 55.3067 34.0001 55.3067C43.1517 55.3067 51.9067 49.81 58.0267 40.205C60.1517 36.89 60.1517 31.11 58.0267 27.795C51.9067 18.19 43.1517 12.6934 34.0001 12.6934Z"/>
+      </svg>
+      <svg class="icon-eye-closed" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M14.5299 9.46992L9.46992 14.5299C8.81992 13.8799 8.41992 12.9899 8.41992 11.9999C8.41992 10.0199 10.0199 8.41992 11.9999 8.41992C12.9899 8.41992 13.8799 8.81992 14.5299 9.46992Z"/>
+        <path d="M17.8198 5.76998C16.0698 4.44998 14.0698 3.72998 11.9998 3.72998C8.46984 3.72998 5.17984 5.80998 2.88984 9.40998C1.98984 10.82 1.98984 13.19 2.88984 14.6C3.67984 15.84 4.59984 16.91 5.59984 17.77"/>
+        <path d="M8.41992 19.5299C9.55992 20.0099 10.7699 20.2699 11.9999 20.2699C15.5299 20.2699 18.8199 18.1899 21.1099 14.5899C22.0099 13.1799 22.0099 10.8099 21.1099 9.39993C20.7799 8.87993 20.4199 8.38993 20.0499 7.92993"/>
+        <path d="M15.5099 12.7C15.2499 14.11 14.0999 15.26 12.6899 15.52"/>
+        <path d="M9.47 14.53L2 22"/>
+        <path d="M21.9998 2L14.5298 9.47"/>
+      </svg>
+    </button>
+  </div>
+</section>
+
+<section class="me-video-section" id="section-selector">
+  <video class="me-selector-bg" autoplay loop muted playsinline preload="auto">
+    <source src="assets/me-textura.mp4" type="video/mp4">
+  </video>
+
+  <div class="me-pill-stack" id="pillStack">
+    <button class="me-pill" data-index="0" aria-label="Film">
+      <img src="assets/pill-film.png" alt="Film">
+    </button>
+    <button class="me-pill" data-index="1" aria-label="Shots">
+      <img src="assets/pill-shots.png" alt="Shots">
+    </button>
+    <button class="me-pill" data-index="2" aria-label="Graphics">
+      <img src="assets/pill-graphics.png" alt="Graphics">
+    </button>
+  </div>
+</section>
+
+<script src="js/me.js"></script>
 </body>
 </html>

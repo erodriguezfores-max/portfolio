@@ -310,6 +310,254 @@ body.cafler-preview .home-location { color: #888; }
 }
 
 /* ═══════════════════════════════════════════
+   ME PAGE — story videos
+═══════════════════════════════════════════ */
+body.me-page { background: #000; }
+
+/* Fade + blur everything in gently on page load */
+.me-fade-in {
+  opacity: 0;
+  filter: blur(16px);
+  transition: opacity 1.2s ease, filter 1.2s ease;
+}
+.me-fade-in.in {
+  opacity: 1;
+  filter: blur(0);
+}
+
+.me-video-section {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: #000;
+}
+
+.me-video-frame {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* Video 1 is shown 25% smaller than the viewport, permanently,
+   sized to its own 16:9 ratio so it never gets cropped top/bottom */
+#frameFeel {
+  width: min(75vw, calc(75vh * 16 / 9));
+  height: auto;
+  aspect-ratio: 16 / 9;
+}
+
+.me-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: filter 1.1s ease, transform 1.1s ease;
+}
+.me-video-frame.pending .me-video {
+  filter: blur(28px) brightness(0.55);
+  transform: scale(1.08);
+}
+/* Once a video finishes its first sound playthrough it keeps
+   looping muted, blurred again, until the eye button is pressed */
+.me-video-frame.settled .me-video {
+  filter: blur(24px) brightness(0.6);
+}
+.me-video-frame.settled.revealed .me-video {
+  filter: blur(0) brightness(0.9);
+}
+
+.me-grain {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 1s ease;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+  mix-blend-mode: overlay;
+}
+.me-grain.visible { opacity: 0.35; }
+
+.me-intro {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1.4rem;
+  text-align: center;
+  padding: 0 1.5rem;
+  opacity: 1;
+  transition: opacity 0.6s ease;
+}
+.me-intro.hidden { opacity: 0; pointer-events: none; }
+.me-intro-text {
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-weight: 400;
+  font-size: clamp(0.85rem, 2.2vw, 1.8rem);
+  color: #fff;
+  white-space: nowrap;
+}
+.me-play-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: none;
+  border: none;
+  color: #fff;
+  font-family: 'Roobert', 'Helvetica Neue', sans-serif;
+  font-weight: 600;
+  font-size: 0.95rem;
+  cursor: pointer;
+}
+.play-icon { width: 15px; height: 15px; }
+
+.me-controls {
+  position: absolute;
+  left: var(--gutter);
+  bottom: 2rem;
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.me-skip-btn {
+  position: absolute;
+  right: var(--gutter);
+  bottom: 2rem;
+  z-index: 5;
+}
+
+.me-icon-btn {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.1);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255,255,255,0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transform: translateY(8px);
+  pointer-events: none;
+  transition: opacity 0.5s ease, transform 0.5s ease, background 0.2s ease;
+  cursor: pointer;
+}
+.me-icon-btn.visible { opacity: 1; transform: none; pointer-events: all; }
+.me-icon-btn:hover { background: rgba(255,255,255,0.2); }
+.me-icon-btn svg { width: 18px; height: 18px; color: #fff; }
+
+.me-volume-btn .icon-muted { display: none; }
+.me-volume-btn.is-muted .icon-unmuted { display: none; }
+.me-volume-btn.is-muted .icon-muted { display: block; }
+
+/* Eye button — toggles between the descriptive text (blurred video)
+   and the clear video (text hidden); reversible */
+.me-eye-btn .icon-eye-open { width: 18px; height: 18px; }
+.me-eye-btn .icon-eye-closed { display: none; width: 18px; height: 18px; }
+.me-eye-btn.showing-video .icon-eye-open { display: none; }
+.me-eye-btn.showing-video .icon-eye-closed { display: block; }
+
+.me-reveal-text {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1.6rem;
+  text-align: center;
+  padding: 0 3rem;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.8s ease;
+}
+.me-reveal-text.showing { opacity: 1; pointer-events: all; }
+.me-reveal-text p {
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-weight: 300;
+  font-size: clamp(0.95rem, 1.6vw, 1.35rem);
+  line-height: 1.55;
+  color: rgba(255,255,255,0.85);
+  max-width: 62ch;
+}
+.me-reveal-text p strong { font-weight: 700; color: #fff; }
+.me-reveal-text .tagline {
+  font-family: 'ClashDisplay', 'Helvetica Neue', sans-serif;
+  font-weight: 600;
+  font-size: 1.3rem;
+  color: #fff;
+  max-width: none;
+}
+
+.me-look-closer {
+  position: absolute;
+  bottom: 3rem;
+  left: 0; right: 0;
+  z-index: 4;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.7rem;
+  opacity: 0;
+  transform: translateY(12px);
+  pointer-events: none;
+  transition: opacity 0.8s ease, transform 0.8s ease;
+  cursor: pointer;
+}
+.me-look-closer.visible { opacity: 1; transform: none; pointer-events: all; }
+.me-look-closer p {
+  font-family: 'ClashDisplay', 'Helvetica Neue', sans-serif;
+  font-weight: 600;
+  font-size: 1.05rem;
+  color: #fff;
+}
+
+/* Film / Shots / Graphics selector — looping background video + glass pills */
+.me-selector-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: blur(6px);
+}
+
+.me-pill-stack {
+  position: relative;
+  z-index: 3;
+  width: 420px;
+  max-width: 86vw;
+  height: 340px;
+  perspective: 900px;
+}
+
+.me-pill {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: max-content;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  will-change: transform, opacity, filter;
+  transition: transform 0.4s cubic-bezier(0.22,1,0.36,1), opacity 0.4s ease, filter 0.4s ease;
+}
+.me-pill img { width: 300px; height: auto; display: block; }
+
+/* ═══════════════════════════════════════════
    CAFLER PAGE
 ═══════════════════════════════════════════ */
 #page-cafler {
@@ -554,5 +802,13 @@ body.cafler-preview .home-location { color: #888; }
     grid-template-columns: 1fr;
     gap: 2rem;
     padding: 3rem var(--gutter);
+  }
+
+  /* -- me page: video 1 switches to a vertical source on mobile
+     (see the <source media="(max-width:767px)"> in me.html), so the
+     frame needs a matching tall aspect ratio instead of 16:9 -- */
+  #frameFeel {
+    width: min(88vw, calc(88vh * 9 / 16));
+    aspect-ratio: 9 / 16;
   }
 }
