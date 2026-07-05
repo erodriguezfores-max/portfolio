@@ -89,12 +89,17 @@ if (workPill && window.matchMedia('(hover: hover) and (pointer: fine)').matches)
 
 }
 
-// -- THE LAST OF US .ES PREVIEW: hover the row to preview its key art (desktop only, same reason as above) --
-const tlouRow = document.getElementById('tlouRow');
-if (tlouRow && window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
-  tlouRow.addEventListener('mouseenter', () => document.body.classList.add('tlou-preview'));
-  tlouRow.addEventListener('mouseleave', () => document.body.classList.remove('tlou-preview'));
+// -- PROJECT ROW PREVIEWS: hover a row to preview its key art (desktop only, same reason as above) --
+const canHover = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+function setupProjectPreview(rowId, previewClass) {
+  const row = document.getElementById(rowId);
+  if (row && canHover) {
+    row.addEventListener('mouseenter', () => document.body.classList.add(previewClass));
+    row.addEventListener('mouseleave', () => document.body.classList.remove(previewClass));
+  }
 }
+setupProjectPreview('tlouRow', 'tlou-preview');
+setupProjectPreview('capoeiraRow', 'capoeira-preview');
 
 // -- LANDING INTRO: mark, pill nav and identity fade in together on load (new home page only) --
 const landing = document.getElementById('landing');

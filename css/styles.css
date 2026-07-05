@@ -361,17 +361,20 @@ body.cafler-preview .home-location { color: #888; }
   padding: 0.6rem 1.6rem;
   transition: border-color 0.4s ease, opacity 0.4s ease, filter 0.4s ease;
 }
-body.tlou-preview .project-row:not(#tlouRow) {
+body.tlou-preview .project-row:not(#tlouRow),
+body.capoeira-preview .project-row:not(#capoeiraRow) {
   opacity: 0;
   filter: blur(8px);
   pointer-events: none;
 }
 
-/* The Last of Us .ES preview — hovering that row swaps the whole page's
-   backdrop for the game's key art and replaces the name with the project
-   logo, mirroring the Cafler preview on Work but with a real image
-   instead of a flat gradient. */
-.tlou-preview-bg {
+/* Per-project preview — hovering a row swaps the whole page's backdrop
+   for that project's key art and replaces the name with its logo,
+   mirroring the Cafler preview on Work but with a real image instead
+   of a flat gradient. Shared structural rules below, one pair of
+   image/logo assets per project. */
+.tlou-preview-bg,
+.capoeira-preview-bg {
   position: absolute;
   inset: 0;
   z-index: 0;
@@ -381,42 +384,48 @@ body.tlou-preview .project-row:not(#tlouRow) {
   transition: opacity 0.9s cubic-bezier(0.4,0,0.2,1);
 }
 body.tlou-preview .tlou-preview-bg { opacity: 1; }
-.tlou-preview-bg img { width: 100%; height: 100%; object-fit: cover; display: block; }
+body.capoeira-preview .capoeira-preview-bg { opacity: 1; }
+.tlou-preview-bg img, .capoeira-preview-bg img { width: 100%; height: 100%; object-fit: cover; display: block; }
 .tlou-scrim {
   position: absolute;
   inset: 0;
   background: linear-gradient(180deg, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.35) 35%, rgba(0,0,0,0.65) 100%);
 }
 
-#tlouRow { position: relative; z-index: 1; }
-#tlouRow::before {
+#tlouRow, #capoeiraRow { position: relative; z-index: 1; }
+#tlouRow::before, #capoeiraRow::before {
   content: '';
   position: absolute;
   inset: 0;
   z-index: -1;
   border-radius: 999px;
-  background-image: url('../assets/tlou-pill.webp');
   background-size: 100% 100%;
   opacity: 0;
   transition: opacity 0.4s ease;
 }
+#tlouRow::before { background-image: url('../assets/tlou-pill.webp'); }
+#capoeiraRow::before { background-image: url('../assets/capoeira-pill.webp'); }
 body.tlou-preview #tlouRow::before { opacity: 1; }
-body.tlou-preview .home-left { opacity: 0; filter: blur(10px); pointer-events: none; }
+body.capoeira-preview #capoeiraRow::before { opacity: 1; }
+body.tlou-preview .home-left,
+body.capoeira-preview .home-left { opacity: 0; filter: blur(10px); pointer-events: none; }
 
-.tlou-logo {
+.tlou-logo, .capoeira-logo {
   position: absolute;
   top: 50%;
   left: 0;
   transform: translateY(-50%);
   z-index: 2;
-  width: min(38vw, 620px);
   height: auto;
   opacity: 0;
   filter: blur(10px);
   pointer-events: none;
   transition: opacity 0.7s cubic-bezier(0.22,1,0.36,1) 0.1s, filter 0.7s cubic-bezier(0.22,1,0.36,1) 0.1s;
 }
+.tlou-logo { width: min(38vw, 620px); }
+.capoeira-logo { width: min(16vw, 260px); }
 body.tlou-preview .tlou-logo { opacity: 1; filter: blur(0); }
+body.capoeira-preview .capoeira-logo { opacity: 1; filter: blur(0); }
 
 /* Cafler preview mark — replaces the name with the brand "trazo" on
    hover. Progressive blur: the base layer is always crisp, and three
