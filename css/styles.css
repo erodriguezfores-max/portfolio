@@ -916,12 +916,13 @@ a.masonry-nav-btn:hover { background: rgba(255,255,255,0.18); color: #fff; }
 
   /* -- home page -- */
   .home-cols {
-    grid-template-columns: 1fr;
-    gap: 2.5rem;
-    padding-top: 2.5rem;
-    padding-bottom: 2.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding-top: calc(1.6rem + 64px + 1.5rem);
+    padding-bottom: 0;
   }
-  .home-right { justify-content: flex-start; }
+  .home-right { justify-content: flex-start; margin-top: 16vh; }
 
   .home-subtitle { white-space: normal; }
 
