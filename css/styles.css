@@ -363,7 +363,8 @@ body.cafler-preview .home-location { color: #888; }
 }
 body.tlou-preview .project-row:not(#tlouRow),
 body.capoeira-preview .project-row:not(#capoeiraRow),
-body.joanastic-preview .project-row:not(#joanasticRow) {
+body.joanastic-preview .project-row:not(#joanasticRow),
+body.despierta-preview .project-row:not(#despiertaRow) {
   opacity: 0;
   filter: blur(8px);
   pointer-events: none;
@@ -376,7 +377,8 @@ body.joanastic-preview .project-row:not(#joanasticRow) {
    image/logo assets per project. */
 .tlou-preview-bg,
 .capoeira-preview-bg,
-.joanastic-preview-bg {
+.joanastic-preview-bg,
+.despierta-preview-bg {
   position: absolute;
   inset: 0;
   z-index: 0;
@@ -388,15 +390,16 @@ body.joanastic-preview .project-row:not(#joanasticRow) {
 body.tlou-preview .tlou-preview-bg { opacity: 1; }
 body.capoeira-preview .capoeira-preview-bg { opacity: 1; }
 body.joanastic-preview .joanastic-preview-bg { opacity: 1; }
-.tlou-preview-bg img, .capoeira-preview-bg img, .joanastic-preview-bg img { width: 100%; height: 100%; object-fit: cover; display: block; }
+body.despierta-preview .despierta-preview-bg { opacity: 1; }
+.tlou-preview-bg img, .capoeira-preview-bg img, .joanastic-preview-bg img, .despierta-preview-bg img { width: 100%; height: 100%; object-fit: cover; display: block; }
 .tlou-scrim {
   position: absolute;
   inset: 0;
   background: linear-gradient(180deg, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.35) 35%, rgba(0,0,0,0.65) 100%);
 }
 
-#tlouRow, #capoeiraRow, #joanasticRow { position: relative; z-index: 1; }
-#tlouRow::before, #capoeiraRow::before, #joanasticRow::before {
+#tlouRow, #capoeiraRow, #joanasticRow, #despiertaRow { position: relative; z-index: 1; }
+#tlouRow::before, #capoeiraRow::before, #joanasticRow::before, #despiertaRow::before {
   content: '';
   position: absolute;
   inset: 0;
@@ -409,14 +412,17 @@ body.joanastic-preview .joanastic-preview-bg { opacity: 1; }
 #tlouRow::before { background-image: url('../assets/tlou-pill.webp'); }
 #capoeiraRow::before { background-image: url('../assets/capoeira-pill.webp'); }
 #joanasticRow::before { background-image: url('../assets/joanastic-pill.webp'); }
+#despiertaRow::before { background-image: url('../assets/despierta-pill.webp'); }
 body.tlou-preview #tlouRow::before { opacity: 1; }
 body.capoeira-preview #capoeiraRow::before { opacity: 1; }
 body.joanastic-preview #joanasticRow::before { opacity: 1; }
+body.despierta-preview #despiertaRow::before { opacity: 1; }
 body.tlou-preview .home-left,
 body.capoeira-preview .home-left,
-body.joanastic-preview .home-left { opacity: 0; filter: blur(10px); pointer-events: none; }
+body.joanastic-preview .home-left,
+body.despierta-preview .home-left { opacity: 0; filter: blur(10px); pointer-events: none; }
 
-.tlou-logo, .capoeira-logo, .joanastic-logo {
+.tlou-logo, .capoeira-logo, .joanastic-logo, .despierta-logo {
   position: absolute;
   top: 50%;
   left: 0;
@@ -431,9 +437,11 @@ body.joanastic-preview .home-left { opacity: 0; filter: blur(10px); pointer-even
 .tlou-logo { width: min(38vw, 620px); }
 .capoeira-logo { width: min(16vw, 260px); }
 .joanastic-logo { width: min(34vw, 560px); }
+.despierta-logo { width: min(37vw, 610px); }
 body.tlou-preview .tlou-logo { opacity: 1; filter: blur(0); }
 body.capoeira-preview .capoeira-logo { opacity: 1; filter: blur(0); }
 body.joanastic-preview .joanastic-logo { opacity: 1; filter: blur(0); }
+body.despierta-preview .despierta-logo { opacity: 1; filter: blur(0); }
 
 /* Joanastic's key art is light, unlike Cafler/TLOU/Capoeira's dark
    backdrops — flip the nav and location text dark to stay legible,

@@ -101,6 +101,7 @@ function setupProjectPreview(rowId, previewClass) {
 setupProjectPreview('tlouRow', 'tlou-preview');
 setupProjectPreview('capoeiraRow', 'capoeira-preview');
 setupProjectPreview('joanasticRow', 'joanastic-preview');
+setupProjectPreview('despiertaRow', 'despierta-preview');
 
 // -- LANDING INTRO: mark, pill nav and identity fade in together on load (new home page only) --
 const landing = document.getElementById('landing');
