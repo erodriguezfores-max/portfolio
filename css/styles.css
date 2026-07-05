@@ -964,11 +964,14 @@ a.masonry-nav-btn:hover { background: rgba(255,255,255,0.18); color: #fff; }
   .home-cols {
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
+    text-align: center;
     padding-top: calc(1.6rem + 64px + 1.5rem);
     padding-bottom: 0;
   }
-  .home-right { justify-content: flex-start; margin-top: 16vh; }
+  .home-name { justify-content: center; }
+  .home-links { justify-content: center; }
+  .home-right { justify-content: center; margin-top: 16vh; }
 
   .home-subtitle { white-space: normal; }
 
