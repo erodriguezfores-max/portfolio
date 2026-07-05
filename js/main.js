@@ -20,9 +20,12 @@ setTimeout(() => {
   });
 }, 50);
 
-// -- EROFO NAME EFFECT (home page only) ---------------------
-const heroName = document.getElementById('heroName');
-if (heroName) {
+// -- EROFO NAME EFFECT: "Eric Rodríguez Forés," -> "EROFO" on hover.
+// `center: true` collapses the kept letters toward the element's own
+// midpoint instead of sliding them to where the first kept letter
+// originally sat — used on the landing page, where the name is
+// centered rather than left-aligned. ---------------------------------
+function setupErofoMorph(el, { center = false } = {}) {
   const nameStr = 'Eric Rodríguez Forés,';
   const keepIdx = new Set([0,5,6,15,16]);
   const spans = [];
@@ -34,20 +37,21 @@ if (heroName) {
     s.textContent = ch === ' ' ? nbsp : ch;
     s.dataset.normal = ch === ' ' ? nbsp : ch;
     s.dataset.upper  = keepIdx.has(i) ? ch.toUpperCase() : ch;
-    heroName.appendChild(s);
+    el.appendChild(s);
     spans.push(s);
   });
 
-  heroName.addEventListener('mouseenter', () => {
-    heroName.classList.add('erofo-on');
+  el.addEventListener('mouseenter', () => {
+    el.classList.add('erofo-on');
     spans.forEach((s,i) => { if (keepIdx.has(i)) s.textContent = s.dataset.upper; });
     requestAnimationFrame(() => {
       const keeps = [...keepIdx].map(i => spans[i]);
       const boxes = keeps.map(s => s.getBoundingClientRect());
-      const nameBox = heroName.getBoundingClientRect();
+      const nameBox = el.getBoundingClientRect();
       const currentPositions = boxes.map(b => b.left - nameBox.left);
       const widths = keeps.map(s => s.offsetWidth);
-      let targetX = currentPositions[0];
+      const totalWidth = widths.reduce((a, w) => a + w, 0);
+      let targetX = center ? (nameBox.width - totalWidth) / 2 : currentPositions[0];
       const targets = [];
       widths.forEach(w => { targets.push(targetX); targetX += w; });
       keeps.forEach((s, idx) => {
@@ -56,14 +60,20 @@ if (heroName) {
     });
   });
 
-  heroName.addEventListener('mouseleave', () => {
-    heroName.classList.remove('erofo-on');
+  el.addEventListener('mouseleave', () => {
+    el.classList.remove('erofo-on');
     spans.forEach((s,i) => {
       s.textContent = s.dataset.normal;
       s.style.removeProperty('--tx');
     });
   });
 }
+
+const heroName = document.getElementById('heroName');
+if (heroName) setupErofoMorph(heroName);
+
+const landingHeroName = document.getElementById('landingHeroName');
+if (landingHeroName) setupErofoMorph(landingHeroName, { center: true });
 
 // -- CAFLER PREVIEW: hover the pill to preview the theme (desktop only —
 // on touch devices, attaching mouseenter/mouseleave here makes the first

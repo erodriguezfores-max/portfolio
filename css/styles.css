@@ -602,6 +602,29 @@ body.landing-page { background: #000; }
   font-weight: 700;
   font-size: clamp(1.1rem, 2vw, 1.4rem);
   color: #fff;
+  display: flex;
+  justify-content: center;
+}
+/* Same Eric Rodríguez Forés -> EROFO letter-morph as .home-name, but
+   the kept letters collapse toward the block's own center instead of
+   sliding left — the JS picks the target start-x accordingly. */
+.landing-name .ltr {
+  display: inline-block;
+  will-change: transform, opacity, filter;
+  transition:
+    opacity 0.38s cubic-bezier(0.4,0,0.2,1),
+    transform 0.38s cubic-bezier(0.4,0,0.2,1),
+    filter 0.38s cubic-bezier(0.4,0,0.2,1);
+}
+.landing-name.erofo-on .ltr.to-hide {
+  opacity: 0;
+  transform: scale(0.1);
+  filter: blur(6px);
+  pointer-events: none;
+}
+.landing-name.erofo-on .ltr.keep {
+  transform: translateX(var(--tx, 0px));
+  animation: motionBlurKeep 0.38s cubic-bezier(0.4,0,0.2,1) forwards;
 }
 .landing-role {
   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
