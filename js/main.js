@@ -65,9 +65,12 @@ if (heroName) {
   });
 }
 
-// -- CAFLER PREVIEW: hover the pill to preview the theme (home page only) --
+// -- CAFLER PREVIEW: hover the pill to preview the theme (desktop only —
+// on touch devices, attaching mouseenter/mouseleave here makes the first
+// tap trigger the hover state instead of navigating, so the link needs a
+// second tap to actually follow it. Skipping this on touch fixes that. --
 const workPill = document.getElementById('workPill');
-if (workPill) {
+if (workPill && window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
   let pillTimer;
 
   workPill.addEventListener('mouseenter', () => {

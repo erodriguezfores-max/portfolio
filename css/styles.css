@@ -359,7 +359,7 @@ body.landing-page { background: #000; }
 .hero-logo {
   position: relative;
   z-index: 2;
-  width: min(72.5vw, 1312px);
+  width: min(108.75vw, 1968px);
   aspect-ratio: 113 / 81;
   opacity: 0;
   filter: blur(20px);
@@ -400,6 +400,7 @@ body.landing-page { background: #000; }
 .landing-pill {
   background: #f2f2f2;
   color: #111;
+  text-align: center;
   font-family: 'ClashDisplay', 'Helvetica Neue', sans-serif;
   font-weight: 700;
   font-size: clamp(1.2rem, 2.3vw, 2rem);
@@ -1097,7 +1098,7 @@ a.masonry-nav-btn:hover { background: rgba(255,255,255,0.18); color: #fff; }
   .work-pill { gap: 1rem; padding: 0.5rem 1.1rem; }
 
   /* -- landing (new home) -- */
-  .hero-logo { width: min(100.6vw, 1500px); } /* 80.5vw/1200px + 25% */
+  .hero-logo { width: min(150.9vw, 2250px); } /* previous mobile size + 50% */
   .landing-pills { flex-direction: column; }
   .landing-name {
     white-space: nowrap;
