@@ -340,8 +340,8 @@ body.cafler-preview .cafler-trazo { opacity: 1; }
 }
 
 /* ═══════════════════════════════════════════
-   LANDING (new home) — small logo that grows into
-   a big glass mark, then reveals the pill nav + identity
+   LANDING (new home) — everything fades in together
+   on load: big mark, pill nav and identity
 ═══════════════════════════════════════════ */
 body.landing-page { background: #000; }
 
@@ -359,26 +359,14 @@ body.landing-page { background: #000; }
 .hero-logo {
   position: relative;
   z-index: 2;
-  width: 96px;
-  aspect-ratio: 1 / 1;
-  background: none;
-  border: none;
-  padding: 0;
-  cursor: pointer;
-  transition: width 1.15s cubic-bezier(0.16,1,0.3,1), aspect-ratio 1.15s cubic-bezier(0.16,1,0.3,1);
+  width: min(72.5vw, 1312px);
+  aspect-ratio: 113 / 81;
+  opacity: 0;
+  filter: blur(20px);
+  transition: opacity 1.1s cubic-bezier(0.22,1,0.36,1), filter 1.1s cubic-bezier(0.22,1,0.36,1);
 }
 .hero-logo-img { width: 100%; height: 100%; display: block; object-fit: contain; }
-#landing.expanded .hero-logo {
-  width: min(58vw, 1050px);
-  aspect-ratio: 113 / 81;
-  cursor: default;
-  animation: heroLogoGrow 1.15s cubic-bezier(0.16,1,0.3,1);
-}
-@keyframes heroLogoGrow {
-  0%   { filter: blur(0px); }
-  45%  { filter: blur(18px); }
-  100% { filter: blur(0px); }
-}
+#landing.revealed .hero-logo { opacity: 1; filter: blur(0); }
 
 /* Bottom vignette — settles in with the rest, gives the identity
    text a clean dark backdrop and darkens the whole footer strip. */
@@ -423,6 +411,13 @@ body.landing-page { background: #000; }
 }
 .landing-pill:hover { background: #fff; transform: translateY(-2px); }
 
+/* Hovering one pill defocuses its siblings (desktop/mouse only —
+   :hover bubbles to the container whenever any child pill is hovered) */
+@media (hover: hover) and (pointer: fine) {
+  .landing-pill { transition: background 0.25s ease, transform 0.25s ease, filter 0.25s ease, opacity 0.25s ease; }
+  .landing-pills:hover .landing-pill:not(:hover) { filter: blur(4px); opacity: 0.5; }
+}
+
 .landing-identity {
   position: absolute;
   bottom: 8vh;
@@ -454,8 +449,7 @@ body.landing-page { background: #000; }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .hero-logo, #landing.expanded .hero-logo { transition: none; animation: none; }
-  .landing-pills, .landing-identity, .landing-vignette { transition: none; }
+  .hero-logo, .landing-pills, .landing-identity, .landing-vignette { transition: none; }
 }
 
 /* ═══════════════════════════════════════════
@@ -1103,8 +1097,8 @@ a.masonry-nav-btn:hover { background: rgba(255,255,255,0.18); color: #fff; }
   .work-pill { gap: 1rem; padding: 0.5rem 1.1rem; }
 
   /* -- landing (new home) -- */
-  .hero-logo { width: 110px; } /* 96px + ~15% */
-  #landing.expanded .hero-logo { width: min(80.5vw, 1200px); } /* 58vw + ~15% */
+  .hero-logo { width: min(100.6vw, 1500px); } /* 80.5vw/1200px + 25% */
+  .landing-pills { flex-direction: column; }
   .landing-name {
     white-space: nowrap;
     font-size: clamp(0.95rem, 6vw, 1.25rem);

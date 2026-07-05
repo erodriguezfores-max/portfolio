@@ -86,20 +86,10 @@ if (workPill) {
 
 }
 
-// -- LANDING INTRO: small logo grows, then reveals the pill nav + identity (new home page only) --
+// -- LANDING INTRO: mark, pill nav and identity fade in together on load (new home page only) --
 const landing = document.getElementById('landing');
-const heroLogo = document.getElementById('heroLogo');
-const heroLogoImg = document.getElementById('heroLogoImg');
-if (landing && heroLogo) {
-  heroLogo.addEventListener('click', () => {
-    if (landing.classList.contains('expanded')) return;
-    landing.classList.add('expanded');
-    heroLogo.disabled = true;
-    // Swap to the big artwork while the logo is at its blurriest mid-grow,
-    // so the hard cut between the two images is masked by the blur.
-    setTimeout(() => { if (heroLogoImg) heroLogoImg.src = 'assets/landing-icon-big.webp'; }, 500);
-    setTimeout(() => landing.classList.add('revealed'), 550);
-  });
+if (landing) {
+  requestAnimationFrame(() => landing.classList.add('revealed'));
 }
 
 // -- PARALLAX -- Cafler hero (cafler page only) --------------
