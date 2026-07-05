@@ -362,7 +362,8 @@ body.cafler-preview .home-location { color: #888; }
   transition: border-color 0.4s ease, opacity 0.4s ease, filter 0.4s ease;
 }
 body.tlou-preview .project-row:not(#tlouRow),
-body.capoeira-preview .project-row:not(#capoeiraRow) {
+body.capoeira-preview .project-row:not(#capoeiraRow),
+body.joanastic-preview .project-row:not(#joanasticRow) {
   opacity: 0;
   filter: blur(8px);
   pointer-events: none;
@@ -374,7 +375,8 @@ body.capoeira-preview .project-row:not(#capoeiraRow) {
    of a flat gradient. Shared structural rules below, one pair of
    image/logo assets per project. */
 .tlou-preview-bg,
-.capoeira-preview-bg {
+.capoeira-preview-bg,
+.joanastic-preview-bg {
   position: absolute;
   inset: 0;
   z-index: 0;
@@ -385,15 +387,16 @@ body.capoeira-preview .project-row:not(#capoeiraRow) {
 }
 body.tlou-preview .tlou-preview-bg { opacity: 1; }
 body.capoeira-preview .capoeira-preview-bg { opacity: 1; }
-.tlou-preview-bg img, .capoeira-preview-bg img { width: 100%; height: 100%; object-fit: cover; display: block; }
+body.joanastic-preview .joanastic-preview-bg { opacity: 1; }
+.tlou-preview-bg img, .capoeira-preview-bg img, .joanastic-preview-bg img { width: 100%; height: 100%; object-fit: cover; display: block; }
 .tlou-scrim {
   position: absolute;
   inset: 0;
   background: linear-gradient(180deg, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.35) 35%, rgba(0,0,0,0.65) 100%);
 }
 
-#tlouRow, #capoeiraRow { position: relative; z-index: 1; }
-#tlouRow::before, #capoeiraRow::before {
+#tlouRow, #capoeiraRow, #joanasticRow { position: relative; z-index: 1; }
+#tlouRow::before, #capoeiraRow::before, #joanasticRow::before {
   content: '';
   position: absolute;
   inset: 0;
@@ -405,12 +408,15 @@ body.capoeira-preview .capoeira-preview-bg { opacity: 1; }
 }
 #tlouRow::before { background-image: url('../assets/tlou-pill.webp'); }
 #capoeiraRow::before { background-image: url('../assets/capoeira-pill.webp'); }
+#joanasticRow::before { background-image: url('../assets/joanastic-pill.webp'); }
 body.tlou-preview #tlouRow::before { opacity: 1; }
 body.capoeira-preview #capoeiraRow::before { opacity: 1; }
+body.joanastic-preview #joanasticRow::before { opacity: 1; }
 body.tlou-preview .home-left,
-body.capoeira-preview .home-left { opacity: 0; filter: blur(10px); pointer-events: none; }
+body.capoeira-preview .home-left,
+body.joanastic-preview .home-left { opacity: 0; filter: blur(10px); pointer-events: none; }
 
-.tlou-logo, .capoeira-logo {
+.tlou-logo, .capoeira-logo, .joanastic-logo {
   position: absolute;
   top: 50%;
   left: 0;
@@ -424,8 +430,22 @@ body.capoeira-preview .home-left { opacity: 0; filter: blur(10px); pointer-event
 }
 .tlou-logo { width: min(38vw, 620px); }
 .capoeira-logo { width: min(16vw, 260px); }
+.joanastic-logo { width: min(34vw, 560px); }
 body.tlou-preview .tlou-logo { opacity: 1; filter: blur(0); }
 body.capoeira-preview .capoeira-logo { opacity: 1; filter: blur(0); }
+body.joanastic-preview .joanastic-logo { opacity: 1; filter: blur(0); }
+
+/* Joanastic's key art is light, unlike Cafler/TLOU/Capoeira's dark
+   backdrops — flip the nav and location text dark to stay legible,
+   same treatment as body.cafler-preview further down. */
+body.joanastic-preview .nav-logo .logo-path { fill: #111; }
+body.joanastic-preview .nav-link.active { color: #111; }
+body.joanastic-preview .nav-link.dim { color: #999; }
+body.joanastic-preview .nav-link:hover { color: #000 !important; }
+body.joanastic-preview .home-name,
+body.joanastic-preview .home-subtitle { color: #111; }
+body.joanastic-preview .home-links a { color: #999; }
+body.joanastic-preview .home-location { color: #888; }
 
 /* Cafler preview mark — replaces the name with the brand "trazo" on
    hover. Progressive blur: the base layer is always crisp, and three
