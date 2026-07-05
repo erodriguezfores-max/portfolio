@@ -3,6 +3,20 @@ requestAnimationFrame(() => {
   document.querySelectorAll('.me-fade-in').forEach(el => el.classList.add('in'));
 });
 
+// Pick the vertical video on small screens. Done here in JS rather than
+// with <source media="..."> because that attribute is unreliable for
+// <video> across browsers (notably Safari) — it was silently falling
+// back to the horizontal source on mobile.
+const videoFeelEl = document.getElementById('videoFeel');
+if (videoFeelEl) {
+  const isMobile = window.matchMedia('(max-width: 767px)').matches;
+  const source = document.createElement('source');
+  source.type = 'video/mp4';
+  source.src = isMobile ? 'assets/me-feel-it-real-vertical.mp4' : 'assets/me-feel-it-real.mp4';
+  videoFeelEl.appendChild(source);
+  videoFeelEl.load();
+}
+
 // Scroll is locked by intercepting user input (wheel/touch/keys) rather
 // than by toggling `overflow`, which resets the scroll position in most
 // browsers when it fights with an in-progress smooth-scroll animation.
