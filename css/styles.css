@@ -293,6 +293,52 @@ body.cafler-preview .work-pill {
 body.cafler-preview .home-location { color: #888; }
 .home-location svg { width: 11px; }
 
+/* Cafler preview mark — replaces the name with the brand "trazo" on
+   hover. Progressive blur: the base layer is always crisp, and three
+   copies stacked on top get progressively blurrier and are masked to
+   fade out by ~15-38% down, so the blur is concentrated where the
+   stroke bleeds off the top of the frame and resolves to sharp by the
+   time it reaches the bend — a soft focus-pull rather than uniform blur. */
+body.cafler-preview .home-left {
+  opacity: 0;
+  filter: blur(10px);
+  pointer-events: none;
+}
+.cafler-trazo {
+  position: absolute;
+  top: -8vh;
+  left: -2vw;
+  width: 62vw;
+  max-width: 900px;
+  aspect-ratio: 1204 / 1080;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.9s cubic-bezier(0.4,0,0.2,1);
+}
+body.cafler-preview .cafler-trazo { opacity: 1; }
+.trazo-layer {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+.trazo-l1 {
+  filter: blur(5px);
+  -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 8%, transparent 38%);
+  mask-image: linear-gradient(to bottom, #000 0%, #000 8%, transparent 38%);
+}
+.trazo-l2 {
+  filter: blur(12px);
+  -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 4%, transparent 26%);
+  mask-image: linear-gradient(to bottom, #000 0%, #000 4%, transparent 26%);
+}
+.trazo-l3 {
+  filter: blur(24px);
+  -webkit-mask-image: linear-gradient(to bottom, #000 0%, transparent 15%);
+  mask-image: linear-gradient(to bottom, #000 0%, transparent 15%);
+}
+
 /* ═══════════════════════════════════════════
    PLACEHOLDER PAGES (Me, Projects...)
 ═══════════════════════════════════════════ */
