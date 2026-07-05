@@ -383,7 +383,19 @@ body.tlou-preview .tlou-preview-bg { opacity: 1; }
   background: linear-gradient(180deg, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.35) 35%, rgba(0,0,0,0.65) 100%);
 }
 
-body.tlou-preview #tlouRow { border-color: rgba(255,255,255,0.4); }
+#tlouRow { position: relative; z-index: 1; }
+#tlouRow::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-radius: 999px;
+  background-image: url('../assets/tlou-pill.webp');
+  background-size: 100% 100%;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+body.tlou-preview #tlouRow::before { opacity: 1; }
 body.tlou-preview .home-left { opacity: 0; filter: blur(10px); pointer-events: none; }
 
 .tlou-logo {
