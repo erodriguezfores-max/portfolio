@@ -23,6 +23,30 @@
   font-weight: 600;
   font-display: swap;
 }
+@font-face {
+  font-family: 'PressGothic';
+  src: url('../fonts/PressGothic-Regular.otf') format('opentype');
+  font-weight: 400;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Robson';
+  src: url('../fonts/Robson-SemiBold.otf') format('opentype');
+  font-weight: 600;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Archivo';
+  src: url('../fonts/Archivo-SemiBold.ttf') format('truetype');
+  font-weight: 600;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'GenericG50CC';
+  src: url('../fonts/GenericG50CC.otf') format('opentype');
+  font-weight: 400;
+  font-display: swap;
+}
 
 /* ─── RESET ─────────────────────────────────── */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -292,6 +316,42 @@ body.cafler-preview .work-pill {
 }
 body.cafler-preview .home-location { color: #888; }
 .home-location svg { width: 11px; }
+
+/* ═══════════════════════════════════════════
+   PROJECTS PAGE — same shell as Work, but the
+   right column is a stack of project rows, each
+   name set in its own display typeface
+═══════════════════════════════════════════ */
+.projects-list {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 1.8rem;
+}
+.project-row {
+  display: flex;
+  align-items: baseline;
+  gap: 1.8rem;
+}
+.project-name {
+  font-size: clamp(1.5rem, 2.6vw, 2.5rem);
+  letter-spacing: -0.01em;
+  color: #fff;
+  line-height: 1.1;
+}
+.project-year {
+  font-family: 'ClashDisplay', 'Helvetica Neue', sans-serif;
+  font-weight: 600;
+  font-size: clamp(1.9rem, 3vw, 2.9rem);
+  letter-spacing: -0.01em;
+  color: #fff;
+  line-height: 1.1;
+}
+
+.font-pressgothic { font-family: 'PressGothic', 'Helvetica Neue', sans-serif; }
+.font-robson       { font-family: 'Robson', 'Helvetica Neue', sans-serif; }
+.font-archivo       { font-family: 'Archivo', 'Helvetica Neue', sans-serif; }
+.font-genericg50   { font-family: 'GenericG50CC', 'Helvetica Neue', sans-serif; }
 
 /* Cafler preview mark — replaces the name with the brand "trazo" on
    hover. Progressive blur: the base layer is always crisp, and three
@@ -1096,6 +1156,12 @@ a.masonry-nav-btn:hover { background: rgba(255,255,255,0.18); color: #fff; }
     font-size: clamp(1.3rem, 7vw, 2rem);
   }
   .work-pill { gap: 1rem; padding: 0.5rem 1.1rem; }
+
+  /* -- projects page -- */
+  .projects-list { align-items: center; gap: 1.1rem; }
+  .project-row { gap: 1rem; }
+  .project-name { font-size: clamp(1.1rem, 6vw, 1.7rem); }
+  .project-year { font-size: clamp(1.1rem, 6vw, 1.7rem); }
 
   /* -- landing (new home) -- */
   .hero-logo { width: min(85vw, 620px); }
