@@ -353,6 +353,54 @@ body.cafler-preview .home-location { color: #888; }
 .font-archivo       { font-family: 'Archivo', 'Helvetica Neue', sans-serif; }
 .font-genericg50   { font-family: 'GenericG50CC', 'Helvetica Neue', sans-serif; }
 
+/* Reserve the border space up front (transparent) so turning it visible
+   on hover/preview never shifts layout. */
+.project-row {
+  border: 1px solid transparent;
+  border-radius: 999px;
+  padding: 0.6rem 1.6rem;
+  transition: border-color 0.4s ease;
+}
+
+/* The Last of Us .ES preview — hovering that row swaps the whole page's
+   backdrop for the game's key art and replaces the name with the project
+   logo, mirroring the Cafler preview on Work but with a real image
+   instead of a flat gradient. */
+.tlou-preview-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.9s cubic-bezier(0.4,0,0.2,1);
+}
+body.tlou-preview .tlou-preview-bg { opacity: 1; }
+.tlou-preview-bg img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.tlou-scrim {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.35) 35%, rgba(0,0,0,0.65) 100%);
+}
+
+body.tlou-preview #tlouRow { border-color: rgba(255,255,255,0.4); }
+body.tlou-preview .home-left { opacity: 0; filter: blur(10px); pointer-events: none; }
+
+.tlou-logo {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  z-index: 2;
+  width: min(38vw, 620px);
+  height: auto;
+  opacity: 0;
+  filter: blur(10px);
+  pointer-events: none;
+  transition: opacity 0.7s cubic-bezier(0.22,1,0.36,1) 0.1s, filter 0.7s cubic-bezier(0.22,1,0.36,1) 0.1s;
+}
+body.tlou-preview .tlou-logo { opacity: 1; filter: blur(0); }
+
 /* Cafler preview mark — replaces the name with the brand "trazo" on
    hover. Progressive blur: the base layer is always crisp, and three
    copies stacked on top get progressively blurrier and are masked to

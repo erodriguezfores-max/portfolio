@@ -89,6 +89,13 @@ if (workPill && window.matchMedia('(hover: hover) and (pointer: fine)').matches)
 
 }
 
+// -- THE LAST OF US .ES PREVIEW: hover the row to preview its key art (desktop only, same reason as above) --
+const tlouRow = document.getElementById('tlouRow');
+if (tlouRow && window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+  tlouRow.addEventListener('mouseenter', () => document.body.classList.add('tlou-preview'));
+  tlouRow.addEventListener('mouseleave', () => document.body.classList.remove('tlou-preview'));
+}
+
 // -- LANDING INTRO: mark, pill nav and identity fade in together on load (new home page only) --
 const landing = document.getElementById('landing');
 if (landing) {
