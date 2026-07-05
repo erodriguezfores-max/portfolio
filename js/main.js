@@ -7,11 +7,14 @@ const revObs = new IntersectionObserver(entries => {
     }
   });
 }, { threshold: 0.06 });
-document.querySelectorAll('.reveal').forEach(el => revObs.observe(el));
+// Elements marked data-lazy-reveal (e.g. masonry grid items) aren't
+// observed here — their layout isn't final yet at this point, so
+// whoever positions them calls revObs.observe() on them once it's done.
+document.querySelectorAll('.reveal:not([data-lazy-reveal])').forEach(el => revObs.observe(el));
 
 // Elements already in view on first load should appear immediately
 setTimeout(() => {
-  document.querySelectorAll('.reveal').forEach(el => {
+  document.querySelectorAll('.reveal:not([data-lazy-reveal])').forEach(el => {
     const rect = el.getBoundingClientRect();
     if (rect.top < window.innerHeight * 0.94) el.classList.add('in');
   });

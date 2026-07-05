@@ -169,8 +169,16 @@ if (pillStack) {
     render();
   }, { passive: false });
 
-  // Only clicking a pill (not hovering) brings it to the centre.
+  // Clicking a pill brings it to the centre; clicking the pill that's
+  // already centred opens its page instead.
   pills.forEach((p, i) => {
-    p.addEventListener('click', () => { offset = i; render(); });
+    p.addEventListener('click', () => {
+      if (Math.abs(wrappedDelta(i)) < 0.05 && p.dataset.href) {
+        window.location.href = p.dataset.href;
+        return;
+      }
+      offset = i;
+      render();
+    });
   });
 }
