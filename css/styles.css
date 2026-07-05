@@ -572,20 +572,77 @@ body.me-page { background: #000; }
 }
 
 .masonry-header {
+  position: relative;
   display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 0.9rem;
+  align-items: center;
+  min-height: 44px;
   margin-bottom: 3rem;
 }
-.masonry-header .back-btn { color: rgba(255,255,255,0.55); }
-.masonry-header .back-btn:hover { color: #fff; }
-.masonry-title {
-  font-family: 'ClashDisplay', 'Helvetica Neue', sans-serif;
-  font-weight: 700;
-  font-size: clamp(2.2rem, 6vw, 4rem);
-  color: #fff;
+.masonry-back {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  flex-shrink: 0;
+  color: rgba(255,255,255,0.55);
+  transition: color 0.2s ease;
 }
+.masonry-back:hover { color: #fff; }
+.masonry-back svg { width: 22px; height: 22px; }
+
+.masonry-nav {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+}
+.masonry-nav-btn {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.14);
+  color: rgba(255,255,255,0.7);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  text-decoration: none;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+a.masonry-nav-btn:hover { background: rgba(255,255,255,0.18); color: #fff; }
+.masonry-nav-btn svg { width: 19px; height: auto; display: block; }
+
+/* Floating glass credit pill — backdrop-filter with an SVG feDisplacementMap
+   reference to refract/distort what's behind it (real glass), with a plain
+   blur as the fallback for engines that reject the url() filter function
+   inside backdrop-filter (older Firefox, some WebKit builds). */
+.copyright-pill {
+  position: fixed;
+  left: var(--gutter);
+  bottom: 1.6rem;
+  z-index: 400;
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.6rem 1.05rem;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.14);
+  box-shadow: 0 4px 24px rgba(0,0,0,0.35), inset 0 1px 0 rgba(255,255,255,0.1);
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 0.78rem;
+  letter-spacing: 0.01em;
+  color: rgba(255,255,255,0.75);
+  -webkit-backdrop-filter: blur(16px) saturate(1.4);
+  backdrop-filter: blur(16px) saturate(1.4) url(#glass-distortion);
+}
+.copyright-pill .copyright-icon { font-size: 0.95em; opacity: 0.85; }
 
 .masonry-grid {
   display: grid;
@@ -899,4 +956,8 @@ body.me-page { background: #000; }
   .masonry-page { padding: calc(1.6rem + 64px + 2rem) var(--gutter) 4rem; }
   .masonry-grid { grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 10px; }
   .masonry-item { border-radius: 8px; }
+  .masonry-nav { gap: 0.5rem; }
+  .masonry-nav-btn { width: 38px; height: 38px; }
+  .masonry-nav-btn svg { width: 16px; }
+  .copyright-pill { padding: 0.5rem 0.85rem; font-size: 0.68rem; gap: 0.35rem; }
 }
