@@ -94,6 +94,7 @@ body.cafler-preview .nav-link:hover  { color: #000 !important; }
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  min-height: 100dvh;
   padding: 0 var(--gutter);
   background: #000;
   position: relative;
@@ -297,6 +298,7 @@ body.cafler-preview .home-location { color: #888; }
 ═══════════════════════════════════════════ */
 .page-placeholder {
   min-height: 100vh;
+  min-height: 100dvh;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -328,6 +330,7 @@ body.me-page { background: #000; }
 .me-video-section {
   position: relative;
   min-height: 100vh;
+  min-height: 100dvh; /* real visible height on mobile Safari, address bar and all */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -339,13 +342,14 @@ body.me-page { background: #000; }
   position: relative;
   width: 100%;
   height: 100vh;
+  height: 100dvh;
   overflow: hidden;
 }
 
 /* Video 1 is shown 25% smaller than the viewport, permanently,
    sized to its own 16:9 ratio so it never gets cropped top/bottom */
 #frameFeel {
-  width: min(75vw, calc(75vh * 16 / 9));
+  width: min(75vw, calc(75dvh * 16 / 9));
   height: auto;
   aspect-ratio: 16 / 9;
 }
@@ -568,6 +572,7 @@ body.me-page { background: #000; }
   position: relative;
   width: 100%;
   height: 100vh;
+  height: 100dvh;
   overflow: hidden;
   display: flex;
   align-items: flex-end;
@@ -806,9 +811,13 @@ body.me-page { background: #000; }
 
   /* -- me page: video 1 switches to a vertical source on mobile
      (see the <source media="(max-width:767px)"> in me.html), so the
-     frame needs a matching tall aspect ratio instead of 16:9 -- */
+     frame needs a matching tall aspect ratio instead of 16:9.
+     height must be reset to auto — otherwise it keeps the 100dvh
+     from .me-video-frame and aspect-ratio has no effect, which was
+     stretching/cropping the video badly. */
   #frameFeel {
-    width: min(88vw, calc(88vh * 9 / 16));
+    width: min(88vw, calc(88dvh * 9 / 16));
+    height: auto;
     aspect-ratio: 9 / 16;
   }
 }
