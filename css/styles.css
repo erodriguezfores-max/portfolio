@@ -359,7 +359,12 @@ body.cafler-preview .home-location { color: #888; }
   border: 1px solid transparent;
   border-radius: 999px;
   padding: 0.6rem 1.6rem;
-  transition: border-color 0.4s ease;
+  transition: border-color 0.4s ease, opacity 0.4s ease, filter 0.4s ease;
+}
+body.tlou-preview .project-row:not(#tlouRow) {
+  opacity: 0;
+  filter: blur(8px);
+  pointer-events: none;
 }
 
 /* The Last of Us .ES preview — hovering that row swaps the whole page's
