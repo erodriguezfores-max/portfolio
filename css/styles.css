@@ -340,6 +340,117 @@ body.cafler-preview .cafler-trazo { opacity: 1; }
 }
 
 /* ═══════════════════════════════════════════
+   LANDING (new home) — small logo that grows into
+   a big glass mark, then reveals the pill nav + identity
+═══════════════════════════════════════════ */
+body.landing-page { background: #000; }
+
+#landing {
+  position: relative;
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: #000;
+}
+
+.hero-logo {
+  position: relative;
+  z-index: 2;
+  width: 96px;
+  aspect-ratio: 163.25 / 160.94;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  filter: drop-shadow(0 0 30px rgba(255,255,255,0.14));
+  transition: width 1.15s cubic-bezier(0.16,1,0.3,1);
+}
+.hero-logo svg { width: 100%; height: 100%; display: block; }
+.hero-logo .logo-path {
+  fill: url(#heroLogoGradient);
+  stroke: rgba(255,255,255,0.3);
+  stroke-width: 1;
+  vector-effect: non-scaling-stroke;
+}
+#landing.expanded .hero-logo {
+  width: min(46vw, 880px);
+  cursor: default;
+  animation: heroLogoGrow 1.15s cubic-bezier(0.16,1,0.3,1);
+}
+@keyframes heroLogoGrow {
+  0%   { filter: drop-shadow(0 0 30px rgba(255,255,255,0.14)) blur(0px); }
+  45%  { filter: drop-shadow(0 0 30px rgba(255,255,255,0.14)) blur(18px); }
+  100% { filter: drop-shadow(0 0 30px rgba(255,255,255,0.14)) blur(0px); }
+}
+
+.landing-pills {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 3;
+  display: flex;
+  gap: 1rem;
+  opacity: 0;
+  filter: blur(14px);
+  pointer-events: none;
+  transition: opacity 0.9s cubic-bezier(0.22,1,0.36,1), filter 0.9s cubic-bezier(0.22,1,0.36,1);
+}
+#landing.revealed .landing-pills { opacity: 1; filter: blur(0); pointer-events: all; }
+
+.landing-pill {
+  background: #f2f2f2;
+  color: #111;
+  font-family: 'ClashDisplay', 'Helvetica Neue', sans-serif;
+  font-weight: 700;
+  font-size: clamp(0.8rem, 1.4vw, 1rem);
+  letter-spacing: 0.02em;
+  padding: 0.9rem 1.8rem;
+  border-radius: 999px;
+  text-decoration: none;
+  transition: background 0.25s ease, transform 0.25s ease;
+}
+.landing-pill:hover { background: #fff; transform: translateY(-2px); }
+
+.landing-identity {
+  position: absolute;
+  bottom: 8vh;
+  left: 50%;
+  z-index: 3;
+  text-align: center;
+  opacity: 0;
+  filter: blur(10px);
+  transform: translate(-50%, 24px);
+  transition:
+    opacity 0.9s cubic-bezier(0.22,1,0.36,1) 0.15s,
+    filter 0.9s cubic-bezier(0.22,1,0.36,1) 0.15s,
+    transform 0.9s cubic-bezier(0.22,1,0.36,1) 0.15s;
+}
+#landing.revealed .landing-identity { opacity: 1; filter: blur(0); transform: translate(-50%, 0); }
+
+.landing-name {
+  font-family: 'ClashDisplay', 'Helvetica Neue', sans-serif;
+  font-weight: 700;
+  font-size: clamp(1.1rem, 2vw, 1.4rem);
+  color: #fff;
+}
+.landing-role {
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-weight: 400;
+  font-size: clamp(0.85rem, 1.4vw, 1rem);
+  color: rgba(255,255,255,0.55);
+  margin-top: 0.2rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-logo, #landing.expanded .hero-logo { transition: none; animation: none; }
+  .landing-pills, .landing-identity { transition: none; }
+}
+
+/* ═══════════════════════════════════════════
    PLACEHOLDER PAGES (Me, Projects...)
 ═══════════════════════════════════════════ */
 .page-placeholder {

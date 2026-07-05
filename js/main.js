@@ -86,7 +86,17 @@ if (workPill) {
 
 }
 
-document.getElementById('navWorkHome')?.addEventListener('click', e => e.preventDefault());
+// -- LANDING INTRO: small logo grows, then reveals the pill nav + identity (new home page only) --
+const landing = document.getElementById('landing');
+const heroLogo = document.getElementById('heroLogo');
+if (landing && heroLogo) {
+  heroLogo.addEventListener('click', () => {
+    if (landing.classList.contains('expanded')) return;
+    landing.classList.add('expanded');
+    heroLogo.disabled = true;
+    setTimeout(() => landing.classList.add('revealed'), 550);
+  });
+}
 
 // -- PARALLAX -- Cafler hero (cafler page only) --------------
 const caflerBg     = document.querySelector('.cafler-bg');
