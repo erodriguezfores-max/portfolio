@@ -1314,8 +1314,12 @@ body.tloues-page { background: #0e0e0e; }
    the 2024 (warm) and 2025 (dark red) palettes.
 ═══════════════════════════════════════════ */
 body.capoeira-page { transition: background 0.5s ease; }
-body[data-year="2024"].capoeira-page { background: #f7b563; }
-body[data-year="2025"].capoeira-page { background: #0d0202; }
+body[data-year="2024"].capoeira-page {
+  background: linear-gradient(180deg, #ed8a4c 0%, #f7b563 40%, #fbc46e 100%);
+}
+body[data-year="2025"].capoeira-page {
+  background: linear-gradient(180deg, #7f070b 0%, #1a0304 35%, #0d0202 100%);
+}
 #page-capoeira { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; }
 #page-capoeira .back-btn,
 #page-capoeira .role-pill p,
@@ -1361,17 +1365,21 @@ body[data-year="2025"] .cafler-bg[data-year="2025"] {
 body[data-year="2024"] .year-btn.active { background: rgba(230,140,40,0.85); border-color: rgba(230,140,40,0.9); }
 body[data-year="2025"] .year-btn.active { background: rgba(216,28,28,0.85); border-color: rgba(216,28,28,0.9); }
 
-/* -- 2024: warm palette, continues Cafler's default light styling -- */
+/* -- 2024: warm palette, continues Cafler's default light styling --
+   The gradient is painted once on <body> (see above) and every
+   section below the hero stays transparent, so it flows unbroken
+   from the hero all the way to the bottom of the gallery instead of
+   restarting/cutting at each section's own box. -- */
 body[data-year="2024"] .cafler-body,
 body[data-year="2024"] .cafler-divider {
-  background: linear-gradient(180deg, #ed8a4c 0%, #f7b563 100%);
+  background: transparent;
 }
 
 /* -- 2025: dark red palette, mirrors TLOU ES's dark-glass override -- */
-body[data-year="2025"] .cafler-body {
-  background: linear-gradient(180deg, #7f070b 0%, #1a0304 65%, #0d0202 100%);
+body[data-year="2025"] .cafler-body,
+body[data-year="2025"] .cafler-divider {
+  background: transparent;
 }
-body[data-year="2025"] .cafler-divider { background: #0d0202; }
 body[data-year="2025"] .back-btn { color: rgba(255,255,255,0.4); }
 body[data-year="2025"] .back-btn:hover { color: #fff; }
 body[data-year="2025"] .role-pill {
@@ -1393,9 +1401,7 @@ body[data-year="2025"] .divider-mark { filter: invert(1); }
   transition: background 0.5s ease, color 0.5s ease, border-color 0.5s ease, box-shadow 0.5s ease;
 }
 
-.capoeira-media-section { padding: 0 var(--gutter) 6rem; transition: background 0.5s ease; }
-body[data-year="2024"] .capoeira-media-section { background: #f7b563; }
-body[data-year="2025"] .capoeira-media-section { background: #0d0202; }
+.capoeira-media-section { padding: 0 var(--gutter) 6rem; background: transparent; }
 .capoeira-media-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
