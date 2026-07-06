@@ -119,17 +119,28 @@ if (landing) {
   requestAnimationFrame(() => landing.classList.add('revealed'));
 }
 
-// -- PARALLAX -- Cafler hero (cafler page only) --------------
-const caflerBg     = document.querySelector('.cafler-bg');
+// -- PARALLAX -- Cafler hero (cafler / tloues / capoeira pages) --
+const caflerBgs    = document.querySelectorAll('.cafler-bg');
 const caflerHeroEl = document.getElementById('caflerHero');
-if (caflerBg && caflerHeroEl) {
+if (caflerBgs.length && caflerHeroEl) {
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   function updateParallax() {
     if (reducedMotion) return;
     const rect   = caflerHeroEl.getBoundingClientRect();
     const offset = -rect.top * 0.35;
-    caflerBg.style.transform = `translateY(${offset}px)`;
+    caflerBgs.forEach(bg => { bg.style.transform = `translateY(${offset}px)`; });
   }
   window.addEventListener('scroll', updateParallax, { passive: true });
+}
+
+// -- CAPOEIRA -- 2024/2025 year toggle -----------------------
+const capoeiraYearButtons = document.querySelectorAll('.year-btn');
+if (capoeiraYearButtons.length) {
+  capoeiraYearButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.body.dataset.year = btn.dataset.year;
+      capoeiraYearButtons.forEach(b => b.classList.toggle('active', b === btn));
+    });
+  });
 }

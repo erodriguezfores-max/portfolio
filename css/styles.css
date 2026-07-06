@@ -1304,6 +1304,117 @@ body.tloues-page { background: #0e0e0e; }
 .tloues-media-item.span-2 { grid-column: span 2; }
 .tloues-media-item.span-4 { grid-column: span 4; }
 
+/* ═══════════════════════════════════════════
+   CAPOEIRA PROJECT PAGE
+   Reuses the Cafler case-study shell, just like
+   TLOU ES. The one real twist: two stacked
+   .cafler-bg images (one per year) cross-fade via
+   [data-year] on #page-capoeira, and the same
+   attribute flips the body/divider theme between
+   the 2024 (warm) and 2025 (dark red) palettes.
+═══════════════════════════════════════════ */
+body.capoeira-page { transition: background 0.5s ease; }
+body[data-year="2024"].capoeira-page { background: #f7b563; }
+body[data-year="2025"].capoeira-page { background: #0d0202; }
+#page-capoeira { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; }
+#page-capoeira .back-btn,
+#page-capoeira .role-pill p,
+#page-capoeira .cafler-skills li,
+#page-capoeira .cafler-desc p { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; }
+
+#page-capoeira .cafler-bg {
+  opacity: 0;
+  transition: opacity 0.7s ease;
+}
+body[data-year="2024"] .cafler-bg[data-year="2024"],
+body[data-year="2025"] .cafler-bg[data-year="2025"] {
+  opacity: 1;
+}
+
+.capoeira-year-toggle {
+  position: fixed;
+  top: 6.5rem;
+  right: var(--gutter);
+  z-index: 550;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+.year-btn {
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-weight: 700;
+  font-size: 0.95rem;
+  letter-spacing: 0.02em;
+  border: none;
+  border-radius: 999px;
+  padding: 0.85rem 1.7rem;
+  cursor: pointer;
+  opacity: 0.55;
+  transition: opacity 0.3s ease, background 0.3s ease, color 0.3s ease;
+}
+.year-btn:hover { opacity: 0.85; }
+.year-btn.active { opacity: 1; }
+body[data-year="2024"] .year-btn { background: rgba(120,70,10,0.16); color: #5c3a10; }
+body[data-year="2024"] .year-btn.active { background: rgba(120,70,10,0.28); color: #4a2d0a; }
+body[data-year="2025"] .year-btn { background: rgba(255,255,255,0.1); color: rgba(255,255,255,0.7); }
+body[data-year="2025"] .year-btn.active { background: rgba(216,28,28,0.55); color: #fff; }
+
+/* -- 2024: warm palette, continues Cafler's default light styling -- */
+body[data-year="2024"] .cafler-body,
+body[data-year="2024"] .cafler-divider {
+  background: linear-gradient(180deg, #ed8a4c 0%, #f7b563 100%);
+}
+
+/* -- 2025: dark red palette, mirrors TLOU ES's dark-glass override -- */
+body[data-year="2025"] .cafler-body {
+  background: linear-gradient(180deg, #7f070b 0%, #1a0304 65%, #0d0202 100%);
+}
+body[data-year="2025"] .cafler-divider { background: #0d0202; }
+body[data-year="2025"] .back-btn { color: rgba(255,255,255,0.4); }
+body[data-year="2025"] .back-btn:hover { color: #fff; }
+body[data-year="2025"] .role-pill {
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.12);
+  box-shadow: 0 4px 24px rgba(0,0,0,0.35), inset 0 1px 0 rgba(255,255,255,0.08);
+}
+body[data-year="2025"] .role-pill p { color: #fff; }
+body[data-year="2025"] .cafler-skills li { color: rgba(255,255,255,0.45); }
+body[data-year="2025"] .cafler-desc p { color: rgba(255,255,255,0.85); }
+body[data-year="2025"] .divider-mark { filter: invert(1); }
+
+#page-capoeira .cafler-body,
+#page-capoeira .cafler-divider,
+#page-capoeira .role-pill,
+#page-capoeira .back-btn,
+#page-capoeira .cafler-skills li,
+#page-capoeira .cafler-desc p {
+  transition: background 0.5s ease, color 0.5s ease, border-color 0.5s ease, box-shadow 0.5s ease;
+}
+
+.capoeira-media-section { padding: 0 var(--gutter) 6rem; transition: background 0.5s ease; }
+body[data-year="2024"] .capoeira-media-section { background: #f7b563; }
+body[data-year="2025"] .capoeira-media-section { background: #0d0202; }
+.capoeira-media-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+.capoeira-media-item {
+  overflow: hidden;
+  border-radius: 12px;
+  background: rgba(0,0,0,0.08);
+}
+.capoeira-media-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.capoeira-media-item.span-1 { grid-column: span 1; }
+.capoeira-media-item.span-2 { grid-column: span 2; }
+body[data-year="2024"] .capoeira-media-item[data-year="2025"] { display: none; }
+body[data-year="2025"] .capoeira-media-item[data-year="2024"] { display: none; }
+
 /* SCROLL REVEAL — opacity + motion blur (shared) */
 .reveal {
   opacity: 0;
@@ -1386,6 +1497,12 @@ body.tloues-page { background: #0e0e0e; }
   .tloues-media-item.span-1 { grid-column: span 1; }
   .tloues-media-item.span-2,
   .tloues-media-item.span-4 { grid-column: span 2; }
+
+  /* -- capoeira media grid + year toggle -- */
+  .capoeira-media-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+  .capoeira-media-item.span-2 { grid-column: span 2; }
+  .capoeira-year-toggle { top: 5.5rem; gap: 0.5rem; }
+  .year-btn { padding: 0.65rem 1.3rem; font-size: 0.8rem; }
 
   /* -- me page: video 1 switches to a vertical source on mobile
      (see the <source media="(max-width:767px)"> in me.html), so the
