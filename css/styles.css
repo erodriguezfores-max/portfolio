@@ -47,6 +47,24 @@
   font-weight: 400;
   font-display: swap;
 }
+@font-face {
+  font-family: 'DIN';
+  src: url('../fonts/DIN-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'DIN';
+  src: url('../fonts/DIN-Medium.otf') format('opentype');
+  font-weight: 500;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'DIN';
+  src: url('../fonts/DIN-Bold.otf') format('opentype');
+  font-weight: 700;
+  font-display: swap;
+}
 
 /* ─── RESET ─────────────────────────────────── */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -332,6 +350,7 @@ body.cafler-preview .home-location { color: #888; }
   display: flex;
   align-items: baseline;
   gap: 1.8rem;
+  text-decoration: none;
 }
 .project-name {
   font-size: clamp(1.5rem, 2.6vw, 2.5rem);
@@ -1225,6 +1244,25 @@ a.masonry-nav-btn:hover { background: rgba(255,255,255,0.18); color: #fff; }
 #nav-cafler .nav-link.active { color: #fff; }
 #nav-cafler .nav-link.dim    { color: rgba(255,255,255,0.4); }
 #nav-cafler .nav-link:hover  { color: #fff !important; }
+
+/* ═══════════════════════════════════════════
+   THE LAST OF US .ES PROJECT PAGE
+   Reuses the whole Cafler case-study shell
+   (.cafler-hero/.cafler-body/.role-pill/etc.)
+   — only the wrapper id changes, so these rules
+   just swap the typeface to DIN without touching
+   Cafler's Roobert styling.
+═══════════════════════════════════════════ */
+#page-tloues { font-family: 'DIN', 'Helvetica Neue', sans-serif; }
+#page-tloues .back-btn { font-family: 'DIN', sans-serif; }
+#page-tloues .role-pill p { font-family: 'DIN', sans-serif; font-weight: 700; }
+#page-tloues .cafler-skills li { font-family: 'DIN', sans-serif; font-weight: 500; }
+#page-tloues .cafler-desc p { font-family: 'DIN', sans-serif; font-weight: 400; }
+
+.tloues-masonry-section {
+  background: #000;
+  padding: 5rem var(--gutter) 6rem;
+}
 
 /* SCROLL REVEAL — opacity + motion blur (shared) */
 .reveal {
