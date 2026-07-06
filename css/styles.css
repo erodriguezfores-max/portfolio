@@ -1322,7 +1322,7 @@ body[data-year="2025"].capoeira-page { background: #0d0202; }
 #page-capoeira .cafler-skills li,
 #page-capoeira .cafler-desc p { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; }
 
-#page-capoeira .cafler-bg {
+.cafler-bg[data-year] {
   opacity: 0;
   transition: opacity 0.7s ease;
 }
@@ -1345,19 +1345,21 @@ body[data-year="2025"] .cafler-bg[data-year="2025"] {
   font-weight: 700;
   font-size: 0.95rem;
   letter-spacing: 0.02em;
-  border: none;
+  border: 1px solid rgba(255,255,255,0.28);
   border-radius: 999px;
   padding: 0.85rem 1.7rem;
   cursor: pointer;
-  opacity: 0.55;
-  transition: opacity 0.3s ease, background 0.3s ease, color 0.3s ease;
+  background: rgba(255,255,255,0.14);
+  backdrop-filter: blur(14px) saturate(1.4);
+  -webkit-backdrop-filter: blur(14px) saturate(1.4);
+  color: rgba(255,255,255,0.8);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+  transition: background 0.3s ease, color 0.3s ease, border-color 0.3s ease;
 }
-.year-btn:hover { opacity: 0.85; }
-.year-btn.active { opacity: 1; }
-body[data-year="2024"] .year-btn { background: rgba(120,70,10,0.16); color: #5c3a10; }
-body[data-year="2024"] .year-btn.active { background: rgba(120,70,10,0.28); color: #4a2d0a; }
-body[data-year="2025"] .year-btn { background: rgba(255,255,255,0.1); color: rgba(255,255,255,0.7); }
-body[data-year="2025"] .year-btn.active { background: rgba(216,28,28,0.55); color: #fff; }
+.year-btn:hover { background: rgba(255,255,255,0.24); color: #fff; }
+.year-btn.active { color: #fff; }
+body[data-year="2024"] .year-btn.active { background: rgba(230,140,40,0.85); border-color: rgba(230,140,40,0.9); }
+body[data-year="2025"] .year-btn.active { background: rgba(216,28,28,0.85); border-color: rgba(216,28,28,0.9); }
 
 /* -- 2024: warm palette, continues Cafler's default light styling -- */
 body[data-year="2024"] .cafler-body,
