@@ -1253,6 +1253,7 @@ a.masonry-nav-btn:hover { background: rgba(255,255,255,0.18); color: #fff; }
    just swap the typeface to DIN without touching
    Cafler's Roobert styling.
 ═══════════════════════════════════════════ */
+body.tloues-page { background: #0e0e0e; }
 #page-tloues { font-family: 'DIN', 'Helvetica Neue', sans-serif; }
 #page-tloues .back-btn { font-family: 'DIN', sans-serif; }
 #page-tloues .role-pill p { font-family: 'DIN', sans-serif; font-weight: 700; }
