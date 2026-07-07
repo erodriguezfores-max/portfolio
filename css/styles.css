@@ -1470,6 +1470,70 @@ body[data-year="2025"] .capoeira-media-item[data-year="2024"] { display: none; }
 .joanastic-media-item.span-3 { grid-column: span 3; }
 .joanastic-media-item.span-4 { grid-column: span 4; }
 
+/* ═══════════════════════════════════════════
+   DESPIERTA PROJECT PAGE
+   Reuses the Cafler case-study shell as-is —
+   only the typeface changes (GenericG50CC).
+   The gallery is split into labelled groups
+   (posters / trailer / stills / rodaje) instead
+   of one continuous grid, per explicit request
+   not to mix categories.
+═══════════════════════════════════════════ */
+#page-despierta { font-family: 'GenericG50CC', 'Helvetica Neue', sans-serif; }
+#page-despierta .back-btn,
+#page-despierta .role-pill p,
+#page-despierta .cafler-skills li,
+#page-despierta .cafler-desc p { font-family: 'GenericG50CC', 'Helvetica Neue', sans-serif; }
+
+.despierta-media-section { padding: 0 var(--gutter) 6rem; }
+.despierta-group-label {
+  font-family: 'GenericG50CC', 'Helvetica Neue', sans-serif;
+  font-size: 0.78rem;
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #888;
+  margin: 3rem 0 1rem;
+}
+.despierta-media-section .despierta-group-label:first-child { margin-top: 0; }
+.despierta-media-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+.despierta-media-item {
+  overflow: hidden;
+  border-radius: 12px;
+  background: rgba(0,0,0,0.05);
+}
+.despierta-media-item img,
+.despierta-trailer-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.despierta-media-item.span-1 { grid-column: span 1; }
+.despierta-media-item.span-2 { grid-column: span 2; }
+.despierta-media-item.span-3 { grid-column: span 3; }
+.despierta-media-item.span-4 { grid-column: span 4; }
+
+.despierta-trailer-wrap { position: relative; }
+.despierta-trailer-controls {
+  position: absolute;
+  right: 1rem;
+  bottom: 1rem;
+  z-index: 5;
+  display: flex;
+  gap: 0.6rem;
+}
+.despierta-sound-btn .icon-muted { display: none; }
+.despierta-sound-btn.is-muted .icon-unmuted { display: none; }
+.despierta-sound-btn.is-muted .icon-muted { display: block; }
+.despierta-fullscreen-btn .icon-collapse { display: none; }
+.despierta-fullscreen-btn.is-fullscreen .icon-expand { display: none; }
+.despierta-fullscreen-btn.is-fullscreen .icon-collapse { display: block; }
+
 /* SCROLL REVEAL — opacity + motion blur (shared) */
 .reveal {
   opacity: 0;
@@ -1565,6 +1629,14 @@ body[data-year="2025"] .capoeira-media-item[data-year="2024"] { display: none; }
   .joanastic-media-item.span-2,
   .joanastic-media-item.span-3,
   .joanastic-media-item.span-4 { grid-column: span 2; }
+
+  /* -- despierta media grid -- */
+  .despierta-media-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+  .despierta-media-item.span-1 { grid-column: span 1; }
+  .despierta-media-item.span-2,
+  .despierta-media-item.span-3,
+  .despierta-media-item.span-4 { grid-column: span 2; }
+  .despierta-trailer-controls { right: 0.6rem; bottom: 0.6rem; gap: 0.4rem; }
 
   /* -- me page: video 1 switches to a vertical source on mobile
      (see the <source media="(max-width:767px)"> in me.html), so the

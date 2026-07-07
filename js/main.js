@@ -144,3 +144,26 @@ if (capoeiraYearButtons.length) {
     });
   });
 }
+
+// -- DESPIERTA -- trailer sound + fullscreen controls ---------
+const despiertaTrailer        = document.getElementById('despiertaTrailer');
+const despiertaSoundBtn       = document.getElementById('despiertaSoundBtn');
+const despiertaFullscreenBtn  = document.getElementById('despiertaFullscreenBtn');
+if (despiertaTrailer && despiertaSoundBtn) {
+  despiertaSoundBtn.addEventListener('click', () => {
+    despiertaTrailer.muted = !despiertaTrailer.muted;
+    despiertaSoundBtn.classList.toggle('is-muted', despiertaTrailer.muted);
+  });
+}
+if (despiertaTrailer && despiertaFullscreenBtn) {
+  despiertaFullscreenBtn.addEventListener('click', () => {
+    if (document.fullscreenElement) {
+      document.exitFullscreen();
+    } else {
+      despiertaTrailer.requestFullscreen();
+    }
+  });
+  document.addEventListener('fullscreenchange', () => {
+    despiertaFullscreenBtn.classList.toggle('is-fullscreen', document.fullscreenElement === despiertaTrailer);
+  });
+}
