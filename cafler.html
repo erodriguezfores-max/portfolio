@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>erofo — Cafler</title>
   <link rel="icon" type="image/svg+xml" href="favicon.svg"/>
-  <link rel="stylesheet" href="css/styles.css?v=17"/>
+  <link rel="stylesheet" href="css/styles.css?v=18"/>
 </head>
 <body class="cafler-page">
 
@@ -26,7 +26,10 @@
   </nav>
 
   <div class="cafler-hero" id="caflerHero">
-    <img class="cafler-bg" src="assets/cafler-cover.webp?v=2" alt="Cafler workshop" />
+    <picture>
+      <source media="(max-width: 767px)" srcset="assets/cafler-cover-vertical.webp?v=3" />
+      <img class="cafler-bg" src="assets/cafler-cover.webp?v=3" alt="Cafler workshop" />
+    </picture>
 
     <div class="cafler-chevron reveal">
       <div class="chevron"></div>

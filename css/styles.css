@@ -1314,12 +1314,8 @@ body.tloues-page { background: #0e0e0e; }
    the 2024 (warm) and 2025 (dark red) palettes.
 ═══════════════════════════════════════════ */
 body.capoeira-page { transition: background 0.5s ease; }
-body[data-year="2024"].capoeira-page {
-  background: linear-gradient(180deg, #ed8a4c 0%, #f7b563 40%, #fbc46e 100%);
-}
-body[data-year="2025"].capoeira-page {
-  background: linear-gradient(180deg, #7f070b 0%, #1a0304 35%, #0d0202 100%);
-}
+body[data-year="2024"].capoeira-page { background: #ffc062; }
+body[data-year="2025"].capoeira-page { background: #2d0003; }
 #page-capoeira { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; }
 #page-capoeira .back-btn,
 #page-capoeira .role-pill p,
@@ -1374,6 +1370,9 @@ body[data-year="2024"] .cafler-body,
 body[data-year="2024"] .cafler-divider {
   background: transparent;
 }
+body[data-year="2024"] .role-pill p,
+body[data-year="2024"] .cafler-desc p { color: #360000; }
+body[data-year="2024"] .cafler-skills li { color: rgba(54,0,0,0.28); }
 
 /* -- 2025: dark red palette, mirrors TLOU ES's dark-glass override -- */
 body[data-year="2025"] .cafler-body,
