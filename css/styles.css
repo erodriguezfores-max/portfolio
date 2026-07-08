@@ -665,6 +665,8 @@ body.landing-page { background: #000; }
   font-weight: 700;
   font-size: clamp(1.1rem, 2vw, 1.4rem);
   color: #fff;
+  text-decoration: none;
+  cursor: pointer;
   display: flex;
   justify-content: center;
 }
@@ -1580,6 +1582,59 @@ body.despierta-page { background: #0e0e0e; }
 .despierta-fullscreen-btn.is-fullscreen .icon-expand { display: none; }
 .despierta-fullscreen-btn.is-fullscreen .icon-collapse { display: block; }
 
+/* ═══════════════════════════════════════════
+   PROFILE PAGE
+   Reuses the Cafler shell (sidebar/role-pill/
+   desc) but with no hero above it, so the
+   sidebar column needs its own top-clearance
+   under the fixed nav — plus a masonry gallery
+   below, reusing the film/shots/graphics grid.
+═══════════════════════════════════════════ */
+body.profile-page { background: #0e0e0e; }
+#page-profile { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; }
+
+#page-profile .cafler-body {
+  background: #0e0e0e;
+  padding-top: calc(1.6rem + 64px + 3rem);
+}
+
+#page-profile .role-pill {
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.12);
+  box-shadow: 0 4px 24px rgba(0,0,0,0.35), inset 0 1px 0 rgba(255,255,255,0.08);
+}
+#page-profile .role-pill p {
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-weight: 700;
+  color: #fff;
+}
+.profile-role-dim {
+  display: inline-block;
+  margin-top: 0.35rem;
+  font-weight: 400;
+  color: rgba(255,255,255,0.5);
+}
+
+.profile-links { list-style: none; }
+.profile-links li { margin-bottom: 0.5rem; }
+.profile-links a {
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-weight: 400;
+  font-size: 0.85rem;
+  color: rgba(255,255,255,0.5);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+.profile-links a:hover { color: #fff; }
+
+#page-profile .profile-desc p {
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-weight: 700;
+  color: rgba(255,255,255,0.88);
+}
+
+.profile-gallery { padding: 2rem var(--gutter) 6rem; background: #0e0e0e; }
+
 /* SCROLL REVEAL — opacity + motion blur (shared) */
 .reveal {
   opacity: 0;
@@ -1656,6 +1711,10 @@ body.despierta-page { background: #0e0e0e; }
     gap: 2rem;
     padding: 3rem var(--gutter);
   }
+
+  /* -- profile page -- */
+  #page-profile .cafler-body { padding-top: calc(1.6rem + 64px + 2rem); }
+  .profile-gallery { padding: 1.5rem var(--gutter) 4rem; }
 
   /* -- tloues media grid -- */
   .tloues-media-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
