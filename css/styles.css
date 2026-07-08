@@ -292,6 +292,7 @@ body.cafler-preview .home-name { color: #111; }
   transition: color 0.5s ease;
 }
 body.cafler-preview .home-subtitle { color: #111; }
+.home-subtitle-break { white-space: normal; }
 
 .cafler-subtitle-word {
   font-family: 'Roobert', 'Helvetica Neue', sans-serif;
