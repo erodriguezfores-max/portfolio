@@ -145,6 +145,16 @@ if (capoeiraYearButtons.length) {
   });
 }
 
+// -- CAFLER -- commercial video sound toggle -------------------
+const caflerCommercialVideo = document.getElementById('caflerCommercialVideo');
+const caflerSoundBtn        = document.getElementById('caflerSoundBtn');
+if (caflerCommercialVideo && caflerSoundBtn) {
+  caflerSoundBtn.addEventListener('click', () => {
+    caflerCommercialVideo.muted = !caflerCommercialVideo.muted;
+    caflerSoundBtn.classList.toggle('is-muted', caflerCommercialVideo.muted);
+  });
+}
+
 // -- DESPIERTA -- trailer sound + fullscreen controls ---------
 const despiertaTrailer        = document.getElementById('despiertaTrailer');
 const despiertaSoundBtn       = document.getElementById('despiertaSoundBtn');

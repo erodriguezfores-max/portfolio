@@ -15,7 +15,7 @@
   <meta name="twitter:description" content="Case study: my work as Junior Graphic Designer &amp; Video Content Creator at Cafler, an AI-powered aftersales platform."/>
   <meta name="twitter:image" content="https://erofo.me/assets/opengraph.jpg"/>
   <link rel="icon" type="image/svg+xml" href="favicon.svg"/>
-  <link rel="stylesheet" href="css/styles.css?v=27"/>
+  <link rel="stylesheet" href="css/styles.css?v=28"/>
 </head>
 <body class="cafler-page">
 
@@ -98,9 +98,21 @@
   </div>
 
   <div class="cafler-video-wrap reveal">
-    <video class="cafler-video" autoplay loop muted playsinline preload="auto">
+    <video class="cafler-video" id="caflerCommercialVideo" autoplay loop muted playsinline preload="auto">
       <source src="assets/cafler-video-comercial.mp4" type="video/mp4">
     </video>
+    <button class="me-icon-btn visible cafler-sound-btn is-muted" id="caflerSoundBtn" aria-label="Activar sonido">
+      <svg class="icon-unmuted" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M11 5 6 9H2v6h4l5 4V5z"/>
+        <path d="M15.5 8.5a5 5 0 0 1 0 7"/>
+        <path d="M18.5 5.5a9 9 0 0 1 0 13"/>
+      </svg>
+      <svg class="icon-muted" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M11 5 6 9H2v6h4l5 4V5z"/>
+        <line x1="23" y1="9" x2="17" y2="15"/>
+        <line x1="17" y1="9" x2="23" y2="15"/>
+      </svg>
+    </button>
   </div>
 
   <img class="cafler-carousel reveal" src="assets/carrusel-cafler1.webp" alt="Cafler AI — funcionalidades de la plataforma" />
